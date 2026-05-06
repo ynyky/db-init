@@ -1,0 +1,41 @@
+---
+
+DB_MASTER_USER:
+  description: Username of a db user with rights to modify the database.
+
+DB_MASTER_PASS:
+  description: Only if this is set any database reconfiguration is done. This env variable is the password of the DB_MASTER_USER.
+
+DB_ROLE_NAMES:
+  description: |
+    Space separated upercase identifiers of the environment variables to use to create the db users.
+    e.g. If you set DB_ROLE_NAMES="APP USER" the the following environment variables have to be set:
+
+    * DB_USER_NAME=my_user
+    * DB_USER_PASS=ap3xei092323r2asedasew
+    * (optional) DB_USER_ROLES="NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS"
+
+    and the same for APP (DB_APP_NAME, ....).
+  default: USER
+
+DB_OWNER:
+  description: name of the db owner
+
+DB_LOCALE:
+  description: |
+    Locale of the database to be created e.g. en_US.utf-8 or en_US.UTF-8.
+
+DB_TEMPLATE:
+  description: |
+    Template to be used, when creating the database, e.g. template0 or template1.
+
+DB_NAME:
+  description: Name of the database.
+
+DB_PORT:
+  description: Hostname of the Database
+  default: 5432
+
+TEST:
+  description: If set to 'true' the SQL statements will only be printed but not run.
+  default: 'false'
