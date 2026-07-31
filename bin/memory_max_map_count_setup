@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURRENT=`sysctl -n vm.max_map_count`
+CURRENT=$(sysctl -n vm.max_map_count)
 DESIRED="524288"
 if [ "$DESIRED" -gt "$CURRENT" ]; then
   echo "setting vm.max_map_count to $DESIRED"
