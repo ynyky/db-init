@@ -10,11 +10,10 @@ DB_TEMPLATE=${DB_TEMPLATE:-template1}
 TEST=${TEST:-false}
 
 run_sql() {
-  local target_db="${2:-template1}"
   if [ "$TEST" = 'true' ]; then
     echo "Test: $1"
   else
-   echo "$1" | PGPASSWORD=$DB_MASTER_PASS psql -p "$DB_PORT" -h "$DB_HOST" -U "$DB_MASTER_USER" "$target_db"
+   echo "$1" | PGPASSWORD=$DB_MASTER_PASS psql -p "$DB_PORT" -h "$DB_HOST" -U "$DB_MASTER_USER" template1
    echo $?
   fi
 }
@@ -72,6 +71,6 @@ EOF
 
 if [[ -n "$SCHEMA_OWNER" ]]; then
   echo "GRANTING ALL ON SCHEMA public TO $SCHEMA_OWNER"
-  run_sql "GRANT ALL ON SCHEMA public TO \"${SCHEMA_OWNER}\";" "${DB_NAME}"
+  run_sql "GRANT ALL ON SCHEMA public TO \"${SCHEMA_OWNER}\";"
 fi
 fi
