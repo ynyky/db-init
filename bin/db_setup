@@ -68,9 +68,4 @@ EOF
   echo "GRANTING CONNECT $DB_NAME TO $_DB_USER_NAME"
   run_sql "GRANT CONNECT ON DATABASE \"${DB_NAME}\" TO \"${_DB_USER_NAME}\";"
  done
-
-if [[ -n "$SCHEMA_OWNER" ]]; then
-  echo "GRANTING ALL ON SCHEMA public TO $SCHEMA_OWNER"
-  run_sql "GRANT ALL ON SCHEMA public TO \"${SCHEMA_OWNER}\";"
-fi
 fi
