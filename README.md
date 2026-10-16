@@ -26,7 +26,8 @@ defaults:
 ## CI
 
 `.github/workflows/build.yml` lints the scripts in `bin/` with ShellCheck,
-then builds and pushes the image to Docker Hub as
+then builds a multi-arch image (`linux/amd64` and `linux/arm64`, so it
+also runs natively on Apple Silicon Macs) and pushes it to Docker Hub as
 `${DOCKERHUB_USER}/db-init:<date>-<commit-sha>` (and `:latest`) on every
 push to `main`. Requires the `DOCKERHUB_USER` and `DOCKERHUB_TOKEN`
 repository secrets, same as `infra-registry-creds`.
